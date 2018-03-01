@@ -1008,6 +1008,7 @@
             this.cbDigest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDigest.FormattingEnabled = true;
             this.cbDigest.Items.AddRange(new object[] {
+            "None",
             "SHA-1",
             "SHA-224",
             "SHA-256",

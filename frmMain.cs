@@ -42,7 +42,7 @@ namespace SignatureVerifier
             cbECName.SelectedIndex = 0;
             cbECKeyLength.SelectedIndex = 0;
 
-            cbDigest.SelectedIndex = 0;
+            cbDigest.SelectedIndex = 1;
             cbCipher.SelectedIndex = 0;
 
             //Oid o = new Oid("1.2.840.10045.2.1");
@@ -1100,6 +1100,9 @@ namespace SignatureVerifier
                 {
                     switch (cbDigest.Text)
                     {
+                        case "None":
+                            signatureMechanism = "RSA";
+                            break;
                         case "SHA-1":
                             signatureMechanism = "SHA-1withRSA";
                             break;
@@ -1126,6 +1129,9 @@ namespace SignatureVerifier
                 {
                     switch (cbDigest.Text)
                     {
+                        case "None":
+                            signatureMechanism = "NONEwithECDSA";
+                            break;
                         case "SHA-1":
                             signatureMechanism = "SHA-1withECDSA";
                             break;
