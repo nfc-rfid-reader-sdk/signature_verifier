@@ -77,6 +77,7 @@
             this.btnECImportP12 = new System.Windows.Forms.Button();
             this.tabVerify = new System.Windows.Forms.TabPage();
             this.gbSignature = new System.Windows.Forms.GroupBox();
+            this.lbECDSASignatureAttention = new System.Windows.Forms.Label();
             this.pbVerification = new System.Windows.Forms.ProgressBar();
             this.btnVerifySignature = new System.Windows.Forms.Button();
             this.btnSignatureLoadFromBin = new System.Windows.Forms.Button();
@@ -765,6 +766,7 @@
             // 
             this.gbSignature.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbSignature.Controls.Add(this.lbECDSASignatureAttention);
             this.gbSignature.Controls.Add(this.pbVerification);
             this.gbSignature.Controls.Add(this.btnVerifySignature);
             this.gbSignature.Controls.Add(this.btnSignatureLoadFromBin);
@@ -775,10 +777,23 @@
             this.gbSignature.Location = new System.Drawing.Point(8, 219);
             this.gbSignature.Margin = new System.Windows.Forms.Padding(8);
             this.gbSignature.Name = "gbSignature";
-            this.gbSignature.Size = new System.Drawing.Size(1116, 137);
+            this.gbSignature.Size = new System.Drawing.Size(1116, 168);
             this.gbSignature.TabIndex = 24;
             this.gbSignature.TabStop = false;
             this.gbSignature.Text = "Signature:";
+            // 
+            // lbECDSASignatureAttention
+            // 
+            this.lbECDSASignatureAttention.AutoSize = true;
+            this.lbECDSASignatureAttention.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbECDSASignatureAttention.ForeColor = System.Drawing.Color.Blue;
+            this.lbECDSASignatureAttention.Location = new System.Drawing.Point(66, 144);
+            this.lbECDSASignatureAttention.Name = "lbECDSASignatureAttention";
+            this.lbECDSASignatureAttention.Size = new System.Drawing.Size(757, 13);
+            this.lbECDSASignatureAttention.TabIndex = 32;
+            this.lbECDSASignatureAttention.Text = "Attention: in the case of ECDSA the signature have to be encoded using ASN.1 stan" +
+    "dard using Distinguished Encoding Rules (DER)";
+            this.lbECDSASignatureAttention.Visible = false;
             // 
             // pbVerification
             // 
@@ -820,7 +835,7 @@
             // rbSignatureBase64
             // 
             this.rbSignatureBase64.AutoSize = true;
-            this.rbSignatureBase64.Location = new System.Drawing.Point(122, 24);
+            this.rbSignatureBase64.Location = new System.Drawing.Point(122, 21);
             this.rbSignatureBase64.Name = "rbSignatureBase64";
             this.rbSignatureBase64.Size = new System.Drawing.Size(61, 17);
             this.rbSignatureBase64.TabIndex = 22;
@@ -833,7 +848,7 @@
             // 
             this.rbSignatureHex.AutoSize = true;
             this.rbSignatureHex.Checked = true;
-            this.rbSignatureHex.Location = new System.Drawing.Point(69, 24);
+            this.rbSignatureHex.Location = new System.Drawing.Point(69, 21);
             this.rbSignatureHex.Name = "rbSignatureHex";
             this.rbSignatureHex.Size = new System.Drawing.Size(47, 17);
             this.rbSignatureHex.TabIndex = 21;
@@ -993,6 +1008,7 @@
             this.cbCipher.Name = "cbCipher";
             this.cbCipher.Size = new System.Drawing.Size(124, 21);
             this.cbCipher.TabIndex = 9;
+            this.cbCipher.SelectedIndexChanged += new System.EventHandler(this.cbCipher_SelectedIndexChanged);
             // 
             // lbCipher
             // 
@@ -1151,6 +1167,7 @@
         private System.Windows.Forms.Button btnRSAImportPem;
         private System.Windows.Forms.Button btnECImportFromPem;
         private System.Windows.Forms.ProgressBar pbVerification;
+        private System.Windows.Forms.Label lbECDSASignatureAttention;
     }
 }
 

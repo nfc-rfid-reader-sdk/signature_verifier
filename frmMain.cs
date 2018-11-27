@@ -1170,7 +1170,7 @@ namespace SignatureVerifier
                         mMessage = Convert.FromBase64String(tbMessage.Text);
                         break;
                     case RADIX.ASCII:
-                        mMessage = Encoding.ASCII.GetBytes(tbMessage.Text);
+                        mMessage = Encoding.ASCII.GetBytes(tbMessage.Text); // Encoding.GetEncoding("windows-1250").GetBytes(tbMessage.Text);
                         break;
                     case RADIX.Exception_FromFile:
                         mMessage = new byte[INPUT_FILE_BUFFER_LEN];
@@ -1179,6 +1179,7 @@ namespace SignatureVerifier
                         throw new Exception("Unknown input data radix");
                 }
 
+                /*/ From v1.2.0.0 ECDSA signatures expected to be DER encoded 
                 if (cbCipher.Text.Equals("ECDSA"))
                 {
                     // Have to be DER encoded before verification:
@@ -1192,8 +1193,8 @@ namespace SignatureVerifier
                     }
                 }
                 else
-                {
-                    if (mSignatureRadix == RADIX.Hex)
+                {//*/
+                if (mSignatureRadix == RADIX.Hex)
                     {
                         mSignature = Hex.Decode(tbSignature.Text);
                     }
@@ -1201,7 +1202,7 @@ namespace SignatureVerifier
                     {
                         mSignature = Convert.FromBase64String(tbSignature.Text);
                     }
-                }
+                //}
 
                 pbVerification.Value = 0;
                 Refresh();
@@ -1305,6 +1306,11 @@ namespace SignatureVerifier
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cbCipher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbECDSASignatureAttention.Visible = cbCipher.Text.Equals("ECDSA");
         }
     }
 }
